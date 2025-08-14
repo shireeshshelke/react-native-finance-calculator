@@ -1,0 +1,59 @@
+{
+  "name": "React Native Development",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2.5.3": {},
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
+    "ghcr.io/nils-geistmann/devcontainers-features/zsh:0.0.7": {
+      "theme": "agnoster",
+      "plugins": "git mise docker bun ubuntu vscode"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.3": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-eslint",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-react-native.react-native-tools",
+        "ms-vscode-remote.remote-containers"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "typescript.suggest.autoImports": true,
+        "emmet.includeLanguages": {
+          "typescript": "html",
+          "javascript": "html"
+        }
+      }
+    }
+  },
+  "forwardPorts": [8081, 3000],
+  "portsAttributes": {
+    "8081": {
+      "label": "Metro Bundler",
+      "onAutoForward": "openPreview"
+    },
+    "3000": {
+      "label": "Web Preview",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "npm install -g @react-native-community/cli react-native-cli && cd FinanceCalculatorApp && npm install",
+  "remoteUser": "node",
+  "containerEnv": {
+    "EXPO_DEVTOOLS_LISTEN_ADDRESS": "0.0.0.0",
+    "REACT_NATIVE_PACKAGER_HOSTNAME": "0.0.0.0"
+  }
+}
